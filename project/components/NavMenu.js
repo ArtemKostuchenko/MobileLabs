@@ -1,23 +1,75 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import HomeIcon from "../assets/home.svg";
 import GalleryIcon from "../assets/gallery.svg";
 import ProfileIcon from "../assets/profile.svg";
+import { useState } from "react";
 
-const NavMenu = () => {
+const NavMenu = ({ navigation }) => {
+  const [selectedScreen, setSelectedScreen] = useState("Home");
+
+  const navigateToScreen = (screen) => {
+    setSelectedScreen(screen);
+    navigation.current.navigate(screen);
+  };
+
   return (
     <View style={styles.menu}>
-      <View style={styles.menuItem}>
-        <HomeIcon style={{ ...styles.menuIcon, fill: "#007aff" }} />
-        <Text style={{ ...styles.menuText, color: "#007aff" }}>Головна</Text>
-      </View>
-      <View style={styles.menuItem}>
-        <GalleryIcon style={styles.menuIcon} />
-        <Text style={styles.menuText}>Фотогалерея</Text>
-      </View>
-      <View style={styles.menuItem}>
-        <ProfileIcon style={styles.menuIcon} />
-        <Text style={styles.menuText}>Профіль</Text>
-      </View>
+      <TouchableOpacity onPress={() => navigateToScreen("Home")}>
+        <View style={styles.menuItem}>
+          <HomeIcon
+            style={{
+              ...styles.menuIcon,
+              fill: selectedScreen === "Home" ? "#007aff" : "#7d7d7d",
+            }}
+          />
+          <Text
+            style={{
+              ...styles.menuText,
+              color: selectedScreen === "Home" ? "#007aff" : "#7d7d7d",
+            }}
+          >
+            Головна
+          </Text>
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => navigateToScreen("Gallery")}>
+        <View style={styles.menuItem}>
+          <GalleryIcon
+            style={{
+              ...styles.menuIcon,
+              fill: selectedScreen === "Gallery" ? "#007aff" : "#7d7d7d",
+            }}
+          />
+          <Text
+            style={{
+              ...styles.menuText,
+              color: selectedScreen === "Gallery" ? "#007aff" : "#7d7d7d",
+            }}
+          >
+            Фотогалерея
+          </Text>
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => navigateToScreen("Profile")}>
+        <View style={styles.menuItem}>
+          <ProfileIcon
+            style={{
+              ...styles.menuIcon,
+              fill: selectedScreen === "Profile" ? "#007aff" : "#7d7d7d",
+            }}
+          />
+          <Text
+            style={{
+              ...styles.menuText,
+              color: selectedScreen === "Profile" ? "#007aff" : "#7d7d7d",
+            }}
+          >
+            Профіль
+          </Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };

@@ -4,24 +4,33 @@ import NavMenu from "./components/NavMenu";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/HomeScreen";
+import GalleryScreen from "./screens/GalleryScreen";
+import { useRef } from "react";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const navigationRef = useRef(null);
+
   return (
-    <View style={styles.container}>
-      <Header />
-      <NavMenu />
-      <NavigationContainer initialRouteName="Home">
-        <Stack.Navigator>
+    <NavigationContainer initialRouteName="Home" ref={navigationRef}>
+      <View style={styles.container}>
+        <Header />
+        <NavMenu navigation={navigationRef} />
+        <Stack.Navigator screenOptions={{ animation: "none" }}>
           <Stack.Screen
             name="Home"
             component={HomeScreen}
             options={{ headerShown: false }}
           />
+          <Stack.Screen
+            name="Gallery"
+            component={GalleryScreen}
+            options={{ headerShown: false }}
+          />
         </Stack.Navigator>
-      </NavigationContainer>
-    </View>
+      </View>
+    </NavigationContainer>
   );
 }
 
