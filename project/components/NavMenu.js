@@ -47,7 +47,7 @@ const NavMenu = ({ navigation }) => {
               color: selectedScreen === "Gallery" ? "#007aff" : "#7d7d7d",
             }}
           >
-            Фотогалерея
+            Фотогаларея
           </Text>
         </View>
       </TouchableOpacity>

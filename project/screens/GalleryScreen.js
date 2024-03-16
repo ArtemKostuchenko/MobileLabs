@@ -44,7 +44,7 @@ const GalleryScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Фотогалерея</Text>
+      <Text style={styles.title}>Фотогаларея</Text>
       <FlatList
         data={data}
         renderItem={loading ? FakeGalleryItem : GalleryItem}
