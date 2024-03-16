@@ -13,7 +13,7 @@ export default function App() {
   const navigationRef = useRef(null);
 
   return (
-    <NavigationContainer initialRouteName="Home" ref={navigationRef}>
+    <NavigationContainer initialRouteName="Gallery" ref={navigationRef}>
       <View style={styles.container}>
         <Header />
         <NavMenu navigation={navigationRef} />
