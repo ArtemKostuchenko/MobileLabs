@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/HomeScreen";
 import GalleryScreen from "./screens/GalleryScreen";
 import { useRef } from "react";
+import ProfileScreen from "./screens/ProfileScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -13,7 +14,7 @@ export default function App() {
   const navigationRef = useRef(null);
 
   return (
-    <NavigationContainer initialRouteName="Gallery" ref={navigationRef}>
+    <NavigationContainer initialRouteName="Home" ref={navigationRef}>
       <View style={styles.container}>
         <Header />
         <NavMenu navigation={navigationRef} />
@@ -26,6 +27,11 @@ export default function App() {
           <Stack.Screen
             name="Gallery"
             component={GalleryScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Profile"
+            component={ProfileScreen}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

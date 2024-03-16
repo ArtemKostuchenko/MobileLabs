@@ -1,4 +1,4 @@
-import { FlatList, ScrollView, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 
 const GalleryItem = ({ item }) => {
   return (
@@ -14,16 +14,14 @@ const GalleryScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Фотогалерея</Text>
-      <ScrollView style={styles.container}>
-        <FlatList
-          data={data}
-          renderItem={GalleryItem}
-          keyExtractor={(item) => item.toString()}
-          numColumns={2}
-          columnWrapperStyle={styles.row}
-          contentContainerStyle={styles.gallery}
-        />
-      </ScrollView>
+      <FlatList
+        data={data}
+        renderItem={GalleryItem}
+        keyExtractor={(item) => item.toString()}
+        numColumns={2}
+        columnWrapperStyle={styles.row}
+        contentContainerStyle={styles.gallery}
+      />
     </View>
   );
 };
@@ -39,26 +37,19 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   gallery: {
-    flex: 1,
     paddingHorizontal: 15,
-    gap: 10,
+    paddingTop: 10,
   },
   row: {
-    gap: 15,
+    justifyContent: "space-between",
+    marginBottom: 15,
   },
   galleryItem: {
-    flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    width: "48%",
     height: 100,
-    shadowColor: "#000000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.17,
-    shadowRadius: 2.54,
-    elevation: 3,
+    backgroundColor: "#f0f0f0",
   },
 });
 
