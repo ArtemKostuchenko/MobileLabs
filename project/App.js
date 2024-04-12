@@ -7,6 +7,7 @@ import HomeScreen from "./screens/HomeScreen";
 import GalleryScreen from "./screens/GalleryScreen";
 import { useRef } from "react";
 import ProfileScreen from "./screens/ProfileScreen";
+import Footer from "./components/Footer";
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +36,7 @@ export default function App() {
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
+        <Footer />
       </View>
     </NavigationContainer>
   );
